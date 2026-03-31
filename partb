@@ -1,0 +1,48 @@
+
+import java.util.Scanner;
+
+public class partb {
+
+    public static int[] toBinaryArray(int number) {
+        // Handle case when number is 0
+        if (number == 0) {
+            return new int[] { 0 };
+        }
+
+        int temp = number;
+        int count = 0;
+
+        // Count number of binary digits
+        while (temp > 0) {
+            temp = temp / 2;
+            count++;
+        }
+
+        int[] binary = new int[count];
+
+        int i = count - 1;
+        while (number > 0) {
+            binary[i] = number % 2;
+            number = number / 2;
+            i--;
+        }
+
+        return binary;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int number = input.nextInt();
+
+        int[] result = toBinaryArray(number);
+
+        System.out.print("Binary representation: ");
+        for (int digit : result) {
+            System.out.print(digit);
+        }
+
+        input.close();
+    }
+}
